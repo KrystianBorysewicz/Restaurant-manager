@@ -7,12 +7,12 @@ namespace RestaurantManager.Core.Models
 {
     public class Employee
     {
-        public int employeeId { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public char sex { get; set; }
-        public string contactNumber { get; set; }
-        public string emailAddress { get; set; }
-        DateTime employedSince { get; set; }
+        public int EmployeeId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public char Sex { get; set; }
+        public string ContactNumber { get; set; }
+        public string EmailAddress { get; set; }
+        DateTime EmployedSince { get; set; }
     }
 }

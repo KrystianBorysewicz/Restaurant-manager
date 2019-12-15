@@ -7,10 +7,19 @@ namespace RestaurantManager.Core.Models
 {
     public class TableStatus
     {
-        public string status { get; set; }
-        public DateTime changedTime { get; set; }
-        public Employee changedBy { get; set; }
-        public DateTime? reservedFor { get; set; }
-        public string? reservedBy { get; set; }
+        public string Status { get; set; }
+        public DateTime ChangedTime { get; set; }
+        public Employee ChangedBy { get; set; }
+        public DateTime? ReservedFor { get; set; }
+        public string ReservedBy { get; set; }
+        
+        /**
+         * Free table
+         * Waiting to order
+         * Waiting for food
+         * Waiting for bill
+         * Paid
+         * Reserved table
+         **/
     }
 }

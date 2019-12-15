@@ -7,10 +7,10 @@ namespace RestaurantManager.Core.Models
 {
     public class Order
     {
-        public int orderId { get; set; }
-        public string orderStatus { get; set; }
-        public DateTime timestamp { get; set; }
-        public List<Product> products { get; set; }
+        public int OrderId { get; set; }
+        public string OrderStatus { get; set; }
+        public DateTime Timestamp { get; set; }
+        public List<Product> Products { get; set; }
 
     }
 }

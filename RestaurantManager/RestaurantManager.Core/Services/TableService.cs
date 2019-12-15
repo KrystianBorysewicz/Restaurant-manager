@@ -12,6 +12,9 @@ namespace RestaurantManager.Core.Services
         private readonly IMongoCollection<Table> _tables;
 
         public TableService()
+        {
+
+        }
 
     }
 }

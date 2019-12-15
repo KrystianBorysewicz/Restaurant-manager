@@ -11,25 +11,29 @@ namespace RestaurantManager.Core.Controllers
 {
     [ApiController]
     [Route("Api/[controller]")]
-    public class RestaurantController : ControllerBase
+    public class FloorController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        // Create new floor
+        [HttpPost("newfloor/{id}")]
+        public ActionResult<Floor> CreateFloor(string id)
+        {
+            return new Floor();
+        }
+        public ActionResult<Floor> DeleteFloor(string id)
+        {
+            return new Floor();
+        }
+        public ActionResult<Floor> AddTableToFloor(string id)
+        {
+            return new Floor();
+        }
+        private readonly ILogger<FloorController> _logger;
 
-        private readonly ILogger<RestaurantController> _logger;
-
-        public RestaurantController(ILogger<RestaurantController> logger)
+        public FloorController(ILogger<FloorController> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet("{num:length(5)}")]
-        public IActionResult Get(string num)
-        {
-
-        }
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {

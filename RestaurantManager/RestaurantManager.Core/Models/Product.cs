@@ -7,10 +7,10 @@ namespace RestaurantManager.Core.Models
 {
     public class Product
     {
-        public int productId { get; set; }
-        public double price { get; set; }
-        public bool available { get; set; }
-        public string description { get; set; }
+        public int ProductId { get; set; }
+        public double Price { get; set; }
+        public bool Available { get; set; }
+        public string Description { get; set; }
 
     }
 }
