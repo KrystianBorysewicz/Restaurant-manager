@@ -8,6 +8,7 @@ namespace RestaurantManager.Core.Models
     public class Order
     {
         public int OrderId { get; set; }
+        public int tableId { get; set; }
         public string OrderStatus { get; set; }
         public DateTime Timestamp { get; set; }
         public List<Product> Products { get; set; }
