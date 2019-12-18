@@ -20,7 +20,7 @@ namespace RestaurantManager.Core.Controllers
         {
             return new Table();
         }
-        public ActionResult<Table> ChangeTableStatus(int tableId, TableStatus newStatus)
+        public ActionResult<Table> ChangeTableStatus(int tableId, tableStatus newStatus)
         {
             return new Table();
         }

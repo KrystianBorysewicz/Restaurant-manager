@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 
 namespace RestaurantManager.Core
 {
@@ -14,6 +15,12 @@ namespace RestaurantManager.Core
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
+            MongoClient dbClient = new MongoClient();
+            MongoServer server = dbClient.GetServer()
+
+            var database = dbClient.GetDatabase("sample_training");
+            var collection = database.GetCollection<BsonDocument>("grades");xxx
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
