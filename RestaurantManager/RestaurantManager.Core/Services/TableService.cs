@@ -17,10 +17,17 @@ namespace RestaurantManager.Core.Services
             _tables = database.GetCollection<Table>(settings.CollectionName);
                 
         }
+        public T Gett<T>(IDatabaseSettings settings, FilterDefinition<T> filter)
+        {
+            var clientt = new MongoClient(settings.ConnectionString);
+            var databaset = clientt.GetDatabase(settings.DatabaseName);
+            var _tablest = databaset.GetCollection<T>(settings.CollectionName);
+            return _tablest.Find(filter).FirstOrDefault();
+        }
         public List<Table> GetAll() =>
             _tables.Find(table => true).ToList();
         public Table GetById(string id) =>
-            _tables.Find(table => table.tableId == id).FirstOrDefault();
+            _tables.Find(table => table.TableId == id).FirstOrDefault();
         public List<Table> GetByFloor(int floor) =>
             _tables.Find(table => table.Floor == floor).ToList();
         //public List<Table> GetByStatus(tableStatus status) =>
@@ -32,10 +39,10 @@ namespace RestaurantManager.Core.Services
         }
         public Table UpdateOne(string id, Table newTable)
         {
-            _tables.ReplaceOne(table => table.tableId == id, newTable);
+            _tables.ReplaceOne(table => table.TableId == id, newTable);
             return newTable;
         }
         public DeleteResult DeleteOne(string id) =>
-            _tables.DeleteOne(table => table.tableId == id);
+            _tables.DeleteOne(table => table.TableId == id);
     }
 }

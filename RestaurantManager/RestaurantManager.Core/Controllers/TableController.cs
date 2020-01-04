@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using Newtonsoft.Json;
 using RestaurantManager.Core.Models;
 using RestaurantManager.Core.Services;
 
@@ -13,20 +16,22 @@ namespace RestaurantManager.Core.Controllers
     [ApiController]
     public class TableController : ControllerBase
     {
-        private readonly TableService _tableService;
-        public TableController(TableService tableService)
+        private readonly MongoCRUD db;
+        public TableController(IDatabaseSettings databaseSettings)
         {
-            _tableService = tableService;
+            this.db = new MongoCRUD(databaseSettings);
         }
         [HttpPost("create")]
         public ActionResult<Table> CreateTable(Table newTable)
         {
-            _tableService.Create(newTable);
+            db.CreateOne(newTable);
             return newTable;
         }
         [HttpGet]
+        //public ActionResult<List<Table>> Get() =>
+        //    db.GetAll(Builders<Table>.Filter.Empty);
         public ActionResult<List<Table>> Get() =>
-            _tableService.GetAll();
+            db.GetAll<Table>("{Floor: 2, TableNumber: 0}");
         public ActionResult<Table> DeleteTable(int tableId)
         {
             return new Table();

@@ -12,13 +12,13 @@ namespace RestaurantManager.Core.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string tableId { get; set; }
+        public string TableId { get; set; }
         [BsonElement("Floor")]
         public int Floor { get; set; }
         [BsonElement("TableNumber")]
-        public int tableNumber { get; set; }
+        public int TableNumber { get; set; }
         //public int Seats { get; set; }
-       // public Vector2 FloorLocation { get; set; }
+        //public Vector2 FloorLocation { get; set; }
         //public tableStatus TableStatus { get; set; }
         //public Employee AssignedStaff { get; set; }
     }
