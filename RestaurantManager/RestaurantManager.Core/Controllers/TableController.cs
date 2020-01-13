@@ -28,10 +28,8 @@ namespace RestaurantManager.Core.Controllers
             return newTable;
         }
         [HttpGet]
-        //public ActionResult<List<Table>> Get() =>
-        //    db.GetAll(Builders<Table>.Filter.Empty);
-        public ActionResult<List<Table>> Get() =>
-            db.GetAll<Table>("{Floor: 2, TableNumber: 0}");
+        public ActionResult<List<Table>> Get(Dictionary<string, object> filter) =>
+            db.GetAll<Table>(filter);
         public ActionResult<Table> DeleteTable(int tableId)
         {
             return new Table();

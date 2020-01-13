@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,15 @@ namespace RestaurantManager.Core.Models
             var collection = this.db.GetCollection<T>(this.settings.CollectionName);
             return collection.Find(filter).FirstOrDefault();
         }
-        public List<T> GetAll<T>(Filter<T> filter) where T : class, new()
+        public List<T> GetAll<T>(Dictionary<string, object> filters) where T : class, new()
         {
             var collection = this.db.GetCollection<T>(this.settings.CollectionName);
+            FilterDefinition<T> filter = FilterDefinition<T>.Empty;
+            foreach (var x in filters)
+            {
+                if (typeof(T).GetProperty(x.Key) != null)
+                    filter &= Builders<T>.Filter.Eq(x.Key, x.Value.ToString());
+            }
             return collection.Find(filter).ToList();
         }
         public T CreateOne<T>(T newObject)
