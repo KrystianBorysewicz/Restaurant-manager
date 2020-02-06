@@ -30,15 +30,18 @@ namespace RestaurantManager.Core.Controllers
         [HttpGet]
         public ActionResult<List<Table>> Get(Dictionary<string, object> filter) =>
             db.GetAll<Table>(filter);
+        [HttpDelete]
         public ActionResult<Table> DeleteTable(int tableId)
         {
             return new Table();
         }
+        [HttpPut]
         public ActionResult<Table> ChangeTableStatus(int tableId, tableStatus newStatus)
         {
             return new Table();
         }
-        public ActionResult<Table> AddOrdersToTable(int tableId, Order newOrder)
+        [HttpPost("addorders")]
+        public ActionResult<Table> AddOrdersToTable(int tableId, List<Order> newOrders)
         {
             return new Table();
         }
